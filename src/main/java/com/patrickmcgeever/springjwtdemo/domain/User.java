@@ -8,33 +8,32 @@ import lombok.With;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Table(name = "USER")
-@DiscriminatorValue("USER")
+@Table(name = "user")
+@DiscriminatorValue("user")
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class User implements Serializable {
 
     @Id
-    @Column(name = "USERNAME", nullable = false, unique = true)
+    @Column(name = "username", nullable = false, unique = true)
     @Getter
     private String username;
 
-    @Column(name = "PASSWORD", nullable = false)
+    @Column(name = "password", nullable = false)
     @With
     @Getter
     private String password;
 
-    @Column(name = "FIRST_NAME", nullable = false)
+    @Column(name = "first_name", nullable = false)
     @Getter
     private String firstName;
 
-    @Column(name = "LAST_NAME", nullable = false)
+    @Column(name = "last_name", nullable = false)
     @Getter
     private String lastName;
 
-    @Column(name = "EMAIL", nullable = false, unique = true)
+    @Column(name = "email", nullable = false, unique = true)
     @Getter
     private String email;
-
 }
