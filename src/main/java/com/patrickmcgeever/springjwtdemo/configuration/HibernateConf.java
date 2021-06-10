@@ -1,4 +1,4 @@
-package com.patrickmcgeever.springjwtdemo;
+package com.patrickmcgeever.springjwtdemo.configuration;
 
 import com.patrickmcgeever.springjwtdemo.dao.AbstractHibernateDAO;
 import com.patrickmcgeever.springjwtdemo.dao.HibernateDAO;
@@ -9,9 +9,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -21,8 +18,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories
-public class ApplicationConf {
-
+public class HibernateConf {
     @Bean
     DataSource dataSource() {
         JdbcDataSource dataSource = new JdbcDataSource();
@@ -43,21 +39,8 @@ public class ApplicationConf {
     }
 
     @Bean
-    PlatformTransactionManager transactionManager() {
-        HibernateTransactionManager transactionManager
-                = new HibernateTransactionManager();
-        transactionManager.setSessionFactory(entityManagerFactory().getObject());
-        return transactionManager;
-    }
-
-    @Bean
     HibernateDAO<User> userDAO() {
         return new AbstractHibernateDAO<User>(User.class){};
-    }
-
-    @Bean
-    BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
     }
 
     private final Properties hibernateProperties() {
