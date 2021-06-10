@@ -5,7 +5,27 @@ This is a demo project for an authentication service using JWTs.
 
 I created it only for playing around with JWTs using Spring.
 
-It should not be used in production!
+__It should not be used in production!__
+
+## How to use
+
+### Configure
+
+### Build/Test
+
+### Package
+
+### Run
+
+An accessible mysql db will be required for the service to connect to.
+If you have docker installed you can use the provided `docker-compose.yml` to launch a MariaDb and PhpMyAdmin.
+
+__Start local MariaDb:__  
+`$ docker-compose up -d`
+
+__Stop:__  
+`$ docker-compose stop`
+
 
 ## API
 

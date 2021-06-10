@@ -16,7 +16,7 @@
 		<java.version>11</java.version>
 		<spring.security.version>5.5.0</spring.security.version>
 		<java.jwt.version>3.16.0</java.jwt.version>
-		<h2.version>1.4.197</h2.version>
+		<mariadb.version>2.7.3</mariadb.version>
 		<lombok.version>1.18.20</lombok.version>
 	</properties>
 	<dependencies>
@@ -43,6 +43,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.tomcat</groupId>
+					<artifactId>tomcat-jdbc</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -53,9 +59,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>${h2.version}</version>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+			<version>${mariadb.version}</version>
 		</dependency>
 
 		<dependency>
