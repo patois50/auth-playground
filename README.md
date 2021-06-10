@@ -14,7 +14,7 @@ actuator/health --> View the health of the application
 
 actuator/info --> View information about the application
 
-actuator -->
+actuator --> 
 ```
 
 

@@ -40,7 +40,6 @@ public class WebSecurityConf extends WebSecurityConfigurerAdapter {
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
                 .addFilter(new JWTAuthorizationFilter(authenticationManager()))
-                // Todo Remove
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler())
                 .and()
                 // this disables session creation on Spring Security
@@ -52,9 +51,6 @@ public class WebSecurityConf extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
-//        if(!auth.isConfigured()) {
-//            throw new IllegalStateException("Auth Manager is not configured!");
-//        }
     }
 
     @Bean
@@ -67,7 +63,6 @@ public class WebSecurityConf extends WebSecurityConfigurerAdapter {
         return source;
     }
 
-    //TODO: remove
     @Bean
     public AccessDeniedHandler accessDeniedHandler(){
         return new CustomAccessDeniedHandler();
